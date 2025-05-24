@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Summer Camp - Fun & Adventure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #fffbe6, #fdf6e3);
+      padding-bottom: 50px;
+    }
+
+    .page {
+      display: none;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 20px;
+      background: #fff9e6;
+      box-shadow: 0 0 20px rgba(255, 183, 77, 0.6);
+      border: 6px dotted #ffa726;
+      position: relative;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      color: #ff6f00;
+    }
+
+    ul {
+      line-height: 1.8;
+      list-style: square inside;
+      padding-left: 0;
+    }
+
+    .btn, button {
+      background-color: #ffa726;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #fb8c00;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 12px;
+      display: block;
+    }
+
+    .disclaimer {
+      font-size: 12px;
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .help-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: #ffa726;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Home Page -->
+<div id="home" class="page active">
+  <button class="help-button" onclick="showPage('help')">?</button>
+  <h1>🎉 Summer Camp 2025 🎨</h1>
+  <h2>GD Goenka, Vasant Kunj, New Delhi</h2>
+  <p style="text-align:center;">For Kids Aged 5–14 | 25-30 May 2025</p>
+
+  <ul>
+    <li>Hide and Seek</li>
+    <li>Dance-Off</li>
+    <li>Art & Craft</li>
+    <li>Story Time</li>
+    <li>Nature Walk</li>
+    <li>Tag</li>
+    <li>Pool Party</li>
+    <li>Treasure Hunt</li>
+    <li>Sack Race</li>
+    <li>Face Painting</li>
+    <li>Obstacle Course</li>
+    <li>Balloon Burst</li>
+    <li>Talent Show</li>
+    <li>Magic Show</li>
+    <li>Mini Olympics</li>
+    <li>Snowball Fight</li>
+  </ul>
+
+  <button onclick="showPage('register')">📝 Register Now</button>
+</div>
+
+<!-- Registration Page -->
+<div id="register" class="page">
+  <button class="help-button" onclick="showPage('help')">?</button>
+  <h2>Register Your Kid</h2>
+  <form onsubmit="event.preventDefault(); showPage('payment');">
+    <label for="name">Child's Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" min="5" max="14" required>
+
+    <label for="parent">Parent's Name:</label>
+    <input type="text" id="parent" required>
+
+    <label for="email">Email (Gmail only):</label>
+    <input type="email" id="email" pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" required>
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" inputmode="numeric" pattern="\d{10}" maxlength="10" required>
+
+    <button type="submit">Continue to Payment</button>
+  </form>
+</div>
+
+<!-- Payment Page -->
+<div id="payment" class="page">
+  <button class="help-button" onclick="showPage('help')">?</button>
+  <h2>Pay ₹3500</h2>
+  <form onsubmit="event.preventDefault(); showPage('confirmation');">
+    <label for="cardName">Cardholder Name:</label>
+    <input type="text" id="cardName" required>
+
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" id="cardNumber" inputmode="numeric" pattern="\d{16}" maxlength="16" required>
+
+    <label for="expiry">Expiry (MMYY):</label>
+    <input type="text" id="expiry" inputmode="numeric" pattern="\d{4}" maxlength="4" required>
+
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" inputmode="numeric" pattern="\d{3,4}" maxlength="4" required>
+
+    <button type="submit">Pay Now</button>
+    <p class="disclaimer">This is a fake payment page. Do not enter real card details.</p>
+  </form>
+</div>
+
+<!-- Confirmation Page -->
+<div id="confirmation" class="page">
+  <button class="help-button" onclick="showPage('help')">?</button>
+  <h2>✅ Thank You!</h2>
+  <p style="text-align:center;">Your child is registered! We'll contact you soon.</p>
+  <button onclick="showPage('home')">🏠 Back to Home</button>
+</div>
+
+<!-- Help Page -->
+<div id="help" class="page">
+  <button class="help-button" onclick="showPage('help')">?</button>
+  <h2><strong>This May Help You</strong></h2>
+  <p style="text-align:center;"><strong>Email:</strong> support@summercampdemo.com</p>
+  <p style="text-align:center;"><strong>Phone:</strong> +91-9999999999</p>
+  <button onclick="showPage('home')">🏠 Go to Home</button>
+</div>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener('input', function (e) {
+    const fields = ['cardNumber', 'cvv', 'expiry', 'phone'];
+    if (fields.includes(e.target.id)) {
+      e.target.value = e.target.value.replace(/\D/g, '');
+    }
+  });
+</script>
+
+</body>
+</html>
